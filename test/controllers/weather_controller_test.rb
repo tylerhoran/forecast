@@ -7,7 +7,6 @@ class WeatherControllerTest < ActionDispatch::IntegrationTest
     @valid_address = '123 Main Street'
     @invalid_address = 'invalid'
 
-    # Mock Reading object
     @mock_reading = Reading.create(
       zipcode: '12345',
       temp: 20.0,
@@ -25,7 +24,7 @@ class WeatherControllerTest < ActionDispatch::IntegrationTest
   test 'should get index' do
     get weather_index_url
     assert_response :success
-    assert_select 'form' # Check if the form is rendered
+    assert_select 'form'
   end
 
   test 'should display weather for a valid address' do

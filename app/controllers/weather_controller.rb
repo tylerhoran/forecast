@@ -8,7 +8,6 @@ class WeatherController < ApplicationController
       weather_service = Weather.new(params[:address])
       @weather = weather_service.current
     rescue StandardError => e
-      # Capture any errors and make them available to the view
       @error = e.message
     end
   end

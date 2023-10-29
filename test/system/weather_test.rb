@@ -3,7 +3,6 @@
 require 'application_system_test_case'
 
 class WeatherTest < ApplicationSystemTestCase
-  # Replace with your actual URLs and text/content in your application
   test 'visiting the index' do
     visit weather_index_url
 
