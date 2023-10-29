@@ -1,24 +1,66 @@
-# README
+# Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[forecast-apple-tyler.herokuapp.com](https://forecast-apple-tyler.herokuapp.com)
 
-Things you may want to cover:
+## Install
 
-* Ruby version
+### Clone the repository
 
-* System dependencies
+```shell
+git clone git@github.com:tylerhoran/forecast.git
+cd forecast
+```
 
-* Configuration
+### Check your Ruby version
 
-* Database creation
+```shell
+ruby -v
+```
 
-* Database initialization
+The ouput should start with something like `ruby 3.2.2`
 
-* How to run the test suite
+If not, install the right ruby version using [rbenv](https://github.com/rbenv/rbenv) (it could take a while):
 
-* Services (job queues, cache servers, search engines, etc.)
+```shell
+rbenv install 3.2.2
+```
 
-* Deployment instructions
+### Install dependencies
 
-* ...
+Using [Bundler](https://github.com/bundler/bundler)
+
+```shell
+bundle
+```
+
+### Set environment variables
+
+Using [Dotenv](https://github.com/bkeepers/dotenv)
+
+Copy `.sample.env` to `.env` and fill in the api key.
+
+### Initialize the database
+
+```shell
+rails db:create db:migrate
+```
+
+## Serve
+
+```shell
+rails s
+```
+
+## Deploy
+
+Push to Heroku remote:
+
+```shell
+git push heroku main
+```
+
+## Test
+
+```shell
+rails test
+```

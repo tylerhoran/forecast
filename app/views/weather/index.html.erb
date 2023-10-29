@@ -1,0 +1,54 @@
+<% if @error %>
+  <div class="bg-red-500 text-white p-3 rounded mb-4"><%= @error %></div>
+<% end %>
+
+<%= form_with url: weather_index_path, method: :get, local: true do %>
+  <div class="flex flex-wrap mb-6">
+    <label for="address">Address</label>
+    <%= text_field_tag :address, params[:address], class: 'form-input mt-1 block w-full' %>
+  </div>
+  <button type="submit" class='border border-black py-2 px-4 hover:border-transparent rounded'>Fetch Weather</button>
+<% end %>
+
+<% if @weather %>
+  <div class="mt-6">
+    <div class="flex items-center justify-center">
+      <div class="flex flex-col bg-white rounded p-4 w-full max-w-xs">
+        <div class="font-bold text-xl"><%= @weather.zipcode %></div>
+        <div class="text-sm text-gray-500"><%= @weather.created_at.to_formatted_s(:short) %></div>
+        <div class="mt-6 text-6xl self-center inline-flex items-center justify-center rounded-lg text-indigo-400 h-24 w-24">
+          <img src="<%=@weather.icon %>">
+        </div>
+        <div class="flex flex-row items-center justify-center mt-6">
+          <div class="font-medium text-6xl"><%= @weather.temp %>°</div>
+          <div class="flex flex-col items-center ml-6">
+            <div>Cloudy</div>
+            <div class="mt-1">
+              <span class="text-sm"><i class="far fa-long-arrow-up"></i></span>
+              <span class="text-sm font-light text-gray-500">H:<%=@weather.temp_max %>°C</span>
+            </div>
+            <div>
+              <span class="text-sm"><i class="far fa-long-arrow-down"></i></span>
+              <span class="text-sm font-light text-gray-500">L:<%=@weather.temp_min %>°C</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-row justify-between mt-6">
+          <div class="flex flex-col items-center">
+            <div class="font-medium text-sm">Wind</div>
+            <div class="text-sm text-gray-500"><%=@weather.wind %>k/h</div>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="font-medium text-sm">Wind Direction</div>
+            <div class="text-sm text-gray-500"><%=@weather.wind_direction %>°</div>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="font-medium text-sm">Cached</div>
+            <div class="text-sm text-gray-500"><%=@weather.cached ? "Yes" : "No" %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end  %>
+</div>
